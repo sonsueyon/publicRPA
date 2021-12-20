@@ -1,0 +1,995 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="SEMS_접속_및_로그인" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:p="http://schemas.uipath.com/workflow/activities/cv" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:uc="clr-namespace:UiPath.CV;assembly=UiPath.CV" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="In_config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="Out_Sems_Browser" Type="OutArgument(ui:Browser)" />
+    <x:Property Name="cre_공인인증서" Type="InArgument(x:String)" />
+    <x:Property Name="SEMS주소" Type="InArgument(x:String)" />
+    <x:Property Name="apikey" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>701,3867</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>SEMS_접속_및_로그인_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.CV</x:String>
+      <x:String>UiPath.Vision.OCR</x:String>
+      <x:String>UiPath.OCR.Contracts</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Contracts</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="SEMS_접속_및_로그인" sap:VirtualizedContainerService.HintSize="681,3767" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="639,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;SEMS_접속 및 로그인_시작&quot;]" />
+    <ui:OpenBrowser CommunicationMethod="{x:Null}" BrowserType="IE" DisplayName="Open Browser" Hidden="False" sap:VirtualizedContainerService.HintSize="639,3413" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" NewSession="True" Private="False" UiBrowser="[Out_Sems_Browser]" Url="[SEMS주소]">
+      <ui:OpenBrowser.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+          </ActivityAction.Argument>
+          <Sequence sap:VirtualizedContainerService.HintSize="605,3314" sap2010:WorkflowViewState.IdRef="Sequence_5">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Sequence sap:VirtualizedContainerService.HintSize="563,3222" sap2010:WorkflowViewState.IdRef="Sequence_3">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:Boolean" Name="ErrFind" />
+                <Variable x:TypeArguments="ss:SecureString" Name="PW" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="521,22" sap2010:WorkflowViewState.IdRef="Delay_1" />
+              <p:CVScope ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DisplayName="CV Screen Scope 'AfxWnd42s'" sap:VirtualizedContainerService.HintSize="521,384" sap2010:WorkflowViewState.IdRef="CVScope_1" Server="http://cv.dongwon.com:8501/v1/models/controls_detection:predict" Version="V1">
+                <p:CVScope.Body>
+                  <ActivityAction x:TypeArguments="x:Object">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="x:Object" Name="CVSessionData" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                      <p:CvClickWithDescriptor DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" Descriptor="[&quot;Target: Button (177,126,229,49)&quot; +&#xA;&quot;Anchor: Text '1 )' (187,282,13,16)&quot;]" DesignTimeScaleFactor="1" DisplayName="CV Click - Button" sap:VirtualizedContainerService.HintSize="400,106" sap2010:WorkflowViewState.IdRef="CvClickWithDescriptor_1" InformativeScreenshot="461b0f4c6da859bf5887a28c464e8f78" KeyModifiers="None" MouseButton="BTN_LEFT" Version="V1">
+                        <p:CvClickWithDescriptor.CursorPosition>
+                          <ui:CursorPosition Position="Center">
+                            <ui:CursorPosition.OffsetX>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:CursorPosition.OffsetX>
+                            <ui:CursorPosition.OffsetY>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:CursorPosition.OffsetY>
+                          </ui:CursorPosition>
+                        </p:CvClickWithDescriptor.CursorPosition>
+                        <p:CvClickWithDescriptor.DesignTimeDescriptor>
+                          <uc:CvDescriptor>
+                            <uc:CvDescriptor.Anchors>
+                              <x:Array Type="uc:CvElementDescriptor">
+                                <uc:CvElementDescriptor DesignTimeArea="187, 282, 13, 16" ElementType="Text" Text="1 )" />
+                              </x:Array>
+                            </uc:CvDescriptor.Anchors>
+                            <uc:CvDescriptor.Target>
+                              <uc:CvElementDescriptor DesignTimeArea="177, 126, 229, 49" ElementType="Button" />
+                            </uc:CvDescriptor.Target>
+                          </uc:CvDescriptor>
+                        </p:CvClickWithDescriptor.DesignTimeDescriptor>
+                        <p:CvClickWithDescriptor.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}">
+                            <ui:Target.TimeoutMS>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:Target.TimeoutMS>
+                            <ui:Target.WaitForReady>
+                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                            </ui:Target.WaitForReady>
+                          </ui:Target>
+                        </p:CvClickWithDescriptor.Target>
+                      </p:CvClickWithDescriptor>
+                    </Sequence>
+                  </ActivityAction>
+                </p:CVScope.Body>
+                <p:CVScope.DesignTimeCache>
+                  <uc:CVCache OcrText="{x:Null}" OcrTexts="{x:Null}" ScreenshotGuid="{x:Null}" ServerVersion="{x:Null}" InformativeScreenshot="636b1addfe6ae69617544efbd9cfc249" LogicalPosition="230, 270" Position="230, 270" ScaleFactor="1">
+                    <uc:CVCache.CvUiElements>
+                      <scg:List x:TypeArguments="uc:CvElementInfo" Capacity="8">
+                        <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="454, 126, 233, 50" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="734, 125, 233, 50" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="177, 126, 229, 49" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="745, 458, 47, 47" Score="1" />
+                        <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="949, 184, 22, 26" Score="1" />
+                        <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="886, 182, 45, 27" Score="1" />
+                        <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="887, 182, 47, 26" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="Runtime" Region="951, 104, 539, 142" Score="1" />
+                      </scg:List>
+                    </uc:CVCache.CvUiElements>
+                  </uc:CVCache>
+                </p:CVScope.DesignTimeCache>
+                <p:CVScope.OCREngine>
+                  <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd:Rectangle, x:String))">
+                    <ActivityFunc.Argument>
+                      <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+                    </ActivityFunc.Argument>
+                    <ui:GoogleCloudOCR FilterRegion="{x:Null}" Output="{x:Null}" Profile="{x:Null}" Scale="{x:Null}" Text="{x:Null}" ApiKey="[apikey]" ComputeSkewAngle="False" DisplayName="Google Cloud Vision OCR" ExtractWords="True" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="GoogleCloudOCR_1" Image="[Image]" Language="ko" ResizeToApiLimits="False" />
+                  </ActivityFunc>
+                </p:CVScope.OCREngine>
+                <p:CVScope.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="2282609827e740cf22509aea5106bde8" Selector="&lt;html title='대기배출원관리시스템' /&gt;&lt;wnd cls='AfxFrameOrView42s' title='대기배출원관리시스템' /&gt;&lt;wnd cls='AfxWnd42s' idx='7' /&gt;" WaitForReady="INTERACTIVE">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                  </ui:Target>
+                </p:CVScope.Target>
+              </p:CVScope>
+              <p:CVScope ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DisplayName="CV Screen Scope 'iexplore.exe 대기배출원관리시스템'" sap:VirtualizedContainerService.HintSize="521,384" sap2010:WorkflowViewState.IdRef="CVScope_4" Server="http://cv.dongwon.com:8501/v1/models/controls_detection:predict" Version="V1">
+                <p:CVScope.Body>
+                  <ActivityAction x:TypeArguments="x:Object">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="x:Object" Name="CVSessionData" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                      <p:CvClickWithDescriptor DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" Descriptor="[&quot;Target: Icon (624,64,22,23)&quot; +&#xA;&quot;Anchor: Text 'ASEMS 대기 배출원 관리 시스템' (15,52,300,43)&quot; +&#xA;&quot;Anchor: Text '운영 기록 월 검증' (520,179,88,16)&quot;]" DesignTimeScaleFactor="1" DisplayName="CV Click - Icon" sap:VirtualizedContainerService.HintSize="400,106" sap2010:WorkflowViewState.IdRef="CvClickWithDescriptor_6" InformativeScreenshot="7d0e1a5e82cbf9ad94d7a88cebee2191" KeyModifiers="None" MouseButton="BTN_LEFT" Version="V1">
+                        <p:CvClickWithDescriptor.CursorPosition>
+                          <ui:CursorPosition Position="Center">
+                            <ui:CursorPosition.OffsetX>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:CursorPosition.OffsetX>
+                            <ui:CursorPosition.OffsetY>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:CursorPosition.OffsetY>
+                          </ui:CursorPosition>
+                        </p:CvClickWithDescriptor.CursorPosition>
+                        <p:CvClickWithDescriptor.DesignTimeDescriptor>
+                          <uc:CvDescriptor>
+                            <uc:CvDescriptor.Anchors>
+                              <x:Array Type="uc:CvElementDescriptor">
+                                <uc:CvElementDescriptor DesignTimeArea="15, 52, 300, 43" ElementType="Text" Text="ASEMS 대기 배출원 관리 시스템" />
+                                <uc:CvElementDescriptor DesignTimeArea="520, 179, 88, 16" ElementType="Text" Text="운영 기록 월 검증" />
+                              </x:Array>
+                            </uc:CvDescriptor.Anchors>
+                            <uc:CvDescriptor.Target>
+                              <uc:CvElementDescriptor DesignTimeArea="624, 64, 22, 23" ElementType="Icon" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABYAAAAXCAYAAAAP6L+eAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADXSURBVEhLY1CZufQ/LfCowXA8hA1OXr/j//UXr8A0TCxwxab/Ky9cJYgnHD4F1wPDcIOLt+37DwIgGiYGswwf/vrzF5iG6YFhvAYTg2EWoIsPjIthYiCN2MIWhkkOY5jYwTsPwGx82HbBarg+ECbKYGIAsj4QxmswyBUgPjIGgYfvPmCIE+1ibGEJwiDw+stXrHLIYY3TYHIAcurAGxSUYLwGE5OOYRimB4bxGkxMWQEyFARgemCY4qAAGQ4C6OK0NxjmbRCNrIAQBjkEpA9dHG4wdfHS/wC/UHBGLFNefQAAAABJRU5ErkJggg==" />
+                            </uc:CvDescriptor.Target>
+                          </uc:CvDescriptor>
+                        </p:CvClickWithDescriptor.DesignTimeDescriptor>
+                        <p:CvClickWithDescriptor.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}">
+                            <ui:Target.TimeoutMS>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:Target.TimeoutMS>
+                            <ui:Target.WaitForReady>
+                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                            </ui:Target.WaitForReady>
+                          </ui:Target>
+                        </p:CvClickWithDescriptor.Target>
+                      </p:CvClickWithDescriptor>
+                    </Sequence>
+                  </ActivityAction>
+                </p:CVScope.Body>
+                <p:CVScope.DesignTimeCache>
+                  <uc:CVCache OcrText="{x:Null}" OcrTexts="{x:Null}" ScreenshotGuid="{x:Null}" ServerVersion="{x:Null}" InformativeScreenshot="08fffde7ac38d5a5833f49ff3a1887fa" LogicalPosition="144, 100" Position="144, 100" ScaleFactor="1">
+                    <uc:CVCache.CvUiElements>
+                      <scg:List x:TypeArguments="uc:CvElementInfo" Capacity="32">
+                        <uc:CvElementInfo Category="ArrowButton" Confidence="DesignTime" Region="723, 75, 23, 21" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="640, 7, 141, 23" Score="1" />
+                        <uc:CvElementInfo Category="ArrowButton" Confidence="DesignTime" Region="199, 88, 16, 15" Score="1" />
+                        <uc:CvElementInfo Category="CloseButton" Confidence="DesignTime" Region="767, 10, 16, 17" Score="1" />
+                        <uc:CvElementInfo Category="ArrowButton" Confidence="DesignTime" Region="183, 17, 13, 13" Score="1" />
+                        <uc:CvElementInfo Category="ArrowButton" Confidence="DesignTime" Region="204, 50, 12, 13" Score="1" />
+                        <uc:CvElementInfo Category="CloseButton" Confidence="DesignTime" Region="194, 66, 18, 19" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="194, 66, 18, 19" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="221, 60, 229, 43" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="211, 30, 404, 31" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="192, 34, 747, 26" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="638, 6, 144, 23" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="514, 9, 115, 21" Score="1" />
+                        <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="200, 15, 10, 13" Score="1" />
+                        <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="196, 68, 15, 14" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="198, 89, 16, 15" Score="1" />
+                        <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="195, 65, 18, 19" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="280, 11, 50, 18" Score="1" />
+                        <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="656, 6, 120, 24" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="226, 13, 33, 16" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="Runtime" Region="1, 63, 183, 25" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="Runtime" Region="0, 8, 190, 55" Score="1" />
+                        <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="515, 9, 108, 21" Score="1" />
+                      </scg:List>
+                    </uc:CVCache.CvUiElements>
+                  </uc:CVCache>
+                </p:CVScope.DesignTimeCache>
+                <p:CVScope.OCREngine>
+                  <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd:Rectangle, x:String))">
+                    <ActivityFunc.Argument>
+                      <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+                    </ActivityFunc.Argument>
+                    <ui:GoogleCloudOCR FilterRegion="{x:Null}" Output="{x:Null}" Profile="{x:Null}" Scale="{x:Null}" Text="{x:Null}" ApiKey="[apikey]" ComputeSkewAngle="False" DisplayName="Google Cloud Vision OCR" ExtractWords="True" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="GoogleCloudOCR_1" Image="[Image]" Language="ko" ResizeToApiLimits="False" />
+                  </ActivityFunc>
+                </p:CVScope.OCREngine>
+                <p:CVScope.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" InformativeScreenshot="76178cb36f14f0c08070568b8d5c0d91" WaitForReady="INTERACTIVE">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                  </ui:Target>
+                </p:CVScope.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </p:CVScope>
+              <p:CVScope ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DisplayName="CV Screen Scope 'AfxWnd42s'" sap:VirtualizedContainerService.HintSize="521,772" sap2010:WorkflowViewState.IdRef="CVScope_2" Server="http://cv.dongwon.com:8501/v1/models/controls_detection:predict" Version="V1">
+                <p:CVScope.Body>
+                  <ActivityAction x:TypeArguments="x:Object">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="x:Object" Name="CVSessionData" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                      <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="400,348" sap2010:WorkflowViewState.IdRef="RetryScope_1">
+                        <ui:RetryScope.ActivityBody>
+                          <ActivityAction>
+                            <p:CVRefresh DelayBefore="{x:Null}" InformativeScreenshot="{x:Null}" TimeoutMS="{x:Null}" DisplayName="CV refresh" sap:VirtualizedContainerService.HintSize="334,83" sap2010:WorkflowViewState.IdRef="CVRefresh_1" IsCacheDirty="True" Version="V1">
+                              <p:CVRefresh.DesignTimeCache>
+                                <uc:CVCache ScreenshotGuid="{x:Null}" ServerVersion="{x:Null}" InformativeScreenshot="dee9eec98716fcad58a7caab635d1e2e" LogicalPosition="62, 57" OcrText="대기 배출원 관리 시스템 - Internet Explorer&#xA;A 」&#xA;SEMS 대기 배출원 관리 시스템 사업장 현황 / 시설 운영 기록 자료 통계 / 조회 자료 입력 확인 기본 부과금 구비 서류&#xA;a Stack Emission Management System&#xA;사업장 현황 새로 고침 O 운영 기록 월 검증 새로 고침 상세 보기&#xA;사업자 등록 번호 312-85-57683 구분 번호 1 가동 시간 시설 운전 사항&#xA;8 월 검증&#xA;사업장 명 동원 시스템즈 ( 주 ) 아산 공장 입력 입력&#xA;| 아산 시청 O 비고&#xA;입력 한 내용 은 해당 연도 에만 적용 , 다음 연도 로 복사 되지 않습니다 . 관할 관청 저장&#xA;조사 년도 2021 비&#xA;시설 현황 고&#xA;배출구 28 개&#xA;시설 현황 방지 시설 18 개 연료 사용량 M 연료 는 전기 만 사용&#xA;예외&#xA;배출 시설 39 개 소각량 예외 □ 페 가스 소각 시설 소각량 은 알수 없음&#xA;O 2021 년 월별 운영 기록 입력 현황 ( 입력기 한 내에 운영 기록 입력 여부 )&#xA;월 1 월 2 월 3 월 4 월 5 월 6 월 7 월 8 월 9 월 10 월 11 월 12 월&#xA;가동 시간 미입력 미입력 미입력 미입력 미입력 미입력 미입력&#xA;운전 사항 미입력 미입력 미입력 미입력 미입력 미입력 미입력&#xA;- 조사 년도 선택 - 초기 화면&#xA;상담 시간 : 09 : 30-11 : 30 , 14 : 00 ~ 17 : 00 , 상담 번호 : 043-279-4592 . 4593. 4594. 4595. 4596. 4597" Position="62, 57" ScaleFactor="1">
+                                  <uc:CVCache.CvUiElements>
+                                    <scg:List x:TypeArguments="uc:CvElementInfo" Capacity="53">
+                                      <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="767, 176, 99, 23" Score="1" />
+                                      <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="868, 176, 100, 23" Score="1" />
+                                      <uc:CvElementInfo Category="Icon" Confidence="DesignTime" Region="5, 4, 22, 21" Score="1" />
+                                      <uc:CvElementInfo Category="MaximizeButton" Confidence="DesignTime" Region="1053, 5, 20, 19" Score="1" />
+                                      <uc:CvElementInfo Category="ArrowButton" Confidence="DesignTime" Region="1104, 684, 19, 18" Score="1" />
+                                      <uc:CvElementInfo Category="CloseButton" Confidence="DesignTime" Region="1099, 6, 17, 17" Score="1" />
+                                      <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="548, 439, 417, 25" Score="1" />
+                                      <uc:CvElementInfo Category="Icon" Confidence="DesignTime" Region="124, 706, 18, 16" Score="1" />
+                                      <uc:CvElementInfo Category="MinimizeButton" Confidence="DesignTime" Region="1007, 6, 21, 18" Score="1" />
+                                      <uc:CvElementInfo Category="CheckBox" Confidence="DesignTime" Region="561, 445, 14, 15" Score="1" />
+                                      <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="554, 468, 409, 25" Score="1" />
+                                      <uc:CvElementInfo Category="ArrowButton" Confidence="DesignTime" Region="1104, 135, 18, 19" Score="1" />
+                                      <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="486, 206, 122, 55" Score="1" />
+                                      <uc:CvElementInfo Category="Icon" Confidence="DesignTime" Region="16, 705, 18, 15" Score="1" />
+                                      <uc:CvElementInfo Category="CheckBox" Confidence="DesignTime" Region="562, 472, 14, 14" Score="1" />
+                                      <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="888, 283, 74, 25" Score="1" />
+                                      <uc:CvElementInfo Category="Icon" Confidence="DesignTime" Region="53, 178, 23, 23" Score="1" />
+                                      <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="50, 398, 105, 93" Score="1" />
+                                      <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="118, 700, 107, 27" Score="1" />
+                                      <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="369, 175, 76, 25" Score="1" />
+                                      <uc:CvElementInfo Category="Icon" Confidence="DesignTime" Region="53, 370, 23, 23" Score="1" />
+                                      <uc:CvElementInfo Category="CloseButton" Confidence="DesignTime" Region="204, 708, 14, 14" Score="1" />
+                                      <uc:CvElementInfo Category="Icon" Confidence="DesignTime" Region="483, 177, 22, 23" Score="1" />
+                                      <uc:CvElementInfo Category="Icon" Confidence="DesignTime" Region="52, 507, 22, 22" Score="1" />
+                                      <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="483, 272, 21, 20" Score="1" />
+                                      <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="52, 508, 22, 22" Score="1" />
+                                      <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="10, 701, 113, 22" Score="1" />
+                                      <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="279, 204, 95, 33" Score="1" />
+                                      <uc:CvElementInfo Category="Icon" Confidence="DesignTime" Region="625, 65, 21, 24" Score="1" />
+                                      <uc:CvElementInfo Category="Icon" Confidence="DesignTime" Region="484, 272, 21, 20" Score="1" />
+                                      <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="374, 205, 69, 32" Score="1" />
+                                      <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="888, 283, 75, 26" Score="1" />
+                                      <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="483, 177, 22, 22" Score="1" />
+                                      <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="561, 312, 406, 126" Score="1" />
+                                      <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="217, 702, 893, 28" Score="1" />
+                                      <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="53, 370, 23, 22" Score="1" />
+                                      <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="368, 175, 76, 25" Score="1" />
+                                      <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="53, 178, 22, 22" Score="1" />
+                                      <uc:CvElementInfo Category="RadioButton" Confidence="Runtime" Region="52, 507, 21, 22" Score="1" />
+                                      <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="372, 204, 71, 32" Score="1" />
+                                      <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="876, 58, 150, 35" Score="1" />
+                                      <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="204, 707, 14, 14" Score="1" />
+                                      <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="878, 59, 149, 36" Score="1" />
+                                      <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="51, 508, 23, 22" Score="1" />
+                                      <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="625, 65, 21, 24" Score="1" />
+                                      <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="444, 59, 127, 33" Score="1" />
+                                      <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="53, 370, 23, 22" Score="1" />
+                                      <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="483, 272, 21, 20" Score="1" />
+                                      <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="52, 178, 23, 23" Score="1" />
+                                      <uc:CvElementInfo Category="RadioButton" Confidence="Runtime" Region="485, 271, 20, 20" Score="1" />
+                                      <uc:CvElementInfo Category="RadioButton" Confidence="Runtime" Region="54, 370, 21, 22" Score="1" />
+                                      <uc:CvElementInfo Category="RadioButton" Confidence="Runtime" Region="483, 177, 22, 23" Score="1" />
+                                      <uc:CvElementInfo Category="RadioButton" Confidence="Runtime" Region="54, 179, 21, 22" Score="1" />
+                                    </scg:List>
+                                  </uc:CVCache.CvUiElements>
+                                  <uc:CVCache.OcrTexts>
+                                    <scg:List x:TypeArguments="uc:OcrTextInfo" Capacity="233">
+                                      <uc:OcrTextInfo Region="31, 10, 20, 10" Text="대기" />
+                                      <uc:OcrTextInfo Region="53, 7, 37, 15" Text="배출원" />
+                                      <uc:OcrTextInfo Region="92, 7, 19, 15" Text="관리" />
+                                      <uc:OcrTextInfo Region="115, 9, 33, 11" Text="시스템" />
+                                      <uc:OcrTextInfo Region="155, 16, 2, 1" Text="-" />
+                                      <uc:OcrTextInfo Region="164, 11, 39, 9" Text="Internet" />
+                                      <uc:OcrTextInfo Region="207, 8, 40, 15" Text="Explorer" />
+                                      <uc:OcrTextInfo Region="22, 52, 31, 39" Text="A" />
+                                      <uc:OcrTextInfo Region="301, 51, 12, 39" Text="」" />
+                                      <uc:OcrTextInfo Region="40, 61, 73, 30" Text="SEMS" />
+                                      <uc:OcrTextInfo Region="118, 64, 35, 21" Text="대기" />
+                                      <uc:OcrTextInfo Region="155, 61, 57, 31" Text="배출원" />
+                                      <uc:OcrTextInfo Region="214, 62, 34, 30" Text="관리" />
+                                      <uc:OcrTextInfo Region="250, 62, 49, 30" Text="시스템" />
+                                      <uc:OcrTextInfo Region="452, 67, 47, 19" Text="사업장" />
+                                      <uc:OcrTextInfo Region="501, 67, 23, 19" Text="현황" />
+                                      <uc:OcrTextInfo Region="526, 67, 8, 19" Text="/" />
+                                      <uc:OcrTextInfo Region="546, 70, 15, 15" Text="시설" />
+                                      <uc:OcrTextInfo Region="587, 70, 26, 15" Text="운영" />
+                                      <uc:OcrTextInfo Region="616, 70, 27, 15" Text="기록" />
+                                      <uc:OcrTextInfo Region="666, 67, 29, 19" Text="자료" />
+                                      <uc:OcrTextInfo Region="697, 67, 26, 19" Text="통계" />
+                                      <uc:OcrTextInfo Region="725, 67, 12, 19" Text="/" />
+                                      <uc:OcrTextInfo Region="739, 67, 19, 19" Text="조회" />
+                                      <uc:OcrTextInfo Region="775, 70, 27, 15" Text="자료" />
+                                      <uc:OcrTextInfo Region="804, 70, 26, 15" Text="입력" />
+                                      <uc:OcrTextInfo Region="832, 70, 27, 15" Text="확인" />
+                                      <uc:OcrTextInfo Region="879, 67, 30, 19" Text="기본" />
+                                      <uc:OcrTextInfo Region="911, 67, 36, 19" Text="부과금" />
+                                      <uc:OcrTextInfo Region="955, 71, 22, 14" Text="구비" />
+                                      <uc:OcrTextInfo Region="980, 70, 32, 15" Text="서류" />
+                                      <uc:OcrTextInfo Region="108, 91, 6, 12" Text="a" />
+                                      <uc:OcrTextInfo Region="116, 91, 21, 12" Text="Stack" />
+                                      <uc:OcrTextInfo Region="140, 94, 29, 9" Text="Emission" />
+                                      <uc:OcrTextInfo Region="172, 94, 45, 10" Text="Management" />
+                                      <uc:OcrTextInfo Region="220, 94, 24, 10" Text="System" />
+                                      <uc:OcrTextInfo Region="78, 180, 40, 16" Text="사업장" />
+                                      <uc:OcrTextInfo Region="120, 180, 24, 16" Text="현황" />
+                                      <uc:OcrTextInfo Region="385, 181, 21, 12" Text="새로" />
+                                      <uc:OcrTextInfo Region="409, 183, 20, 10" Text="고침" />
+                                      <uc:OcrTextInfo Region="493, 187, 5, 4" Text="O" />
+                                      <uc:OcrTextInfo Region="520, 179, 23, 16" Text="운영" />
+                                      <uc:OcrTextInfo Region="545, 179, 21, 16" Text="기록" />
+                                      <uc:OcrTextInfo Region="571, 179, 15, 16" Text="월" />
+                                      <uc:OcrTextInfo Region="598, 182, 10, 11" Text="검증" />
+                                      <uc:OcrTextInfo Region="790, 179, 30, 13" Text="새로" />
+                                      <uc:OcrTextInfo Region="822, 179, 17, 13" Text="고침" />
+                                      <uc:OcrTextInfo Region="894, 183, 20, 10" Text="상세" />
+                                      <uc:OcrTextInfo Region="916, 180, 21, 13" Text="보기" />
+                                      <uc:OcrTextInfo Region="54, 212, 40, 16" Text="사업자" />
+                                      <uc:OcrTextInfo Region="96, 212, 23, 16" Text="등록" />
+                                      <uc:OcrTextInfo Region="121, 212, 21, 16" Text="번호" />
+                                      <uc:OcrTextInfo Region="152, 215, 99, 10" Text="312-85-57683" />
+                                      <uc:OcrTextInfo Region="302, 211, 28, 14" Text="구분" />
+                                      <uc:OcrTextInfo Region="342, 215, 10, 8" Text="번호" />
+                                      <uc:OcrTextInfo Region="408, 215, 3, 10" Text="1" />
+                                      <uc:OcrTextInfo Region="673, 211, 27, 13" Text="가동" />
+                                      <uc:OcrTextInfo Region="702, 212, 17, 13" Text="시간" />
+                                      <uc:OcrTextInfo Region="839, 215, 20, 10" Text="시설" />
+                                      <uc:OcrTextInfo Region="861, 212, 22, 15" Text="운전" />
+                                      <uc:OcrTextInfo Region="887, 215, 22, 10" Text="사항" />
+                                      <uc:OcrTextInfo Region="515, 225, 16, 16" Text="8" />
+                                      <uc:OcrTextInfo Region="533, 225, 12, 16" Text="월" />
+                                      <uc:OcrTextInfo Region="549, 229, 21, 10" Text="검증" />
+                                      <uc:OcrTextInfo Region="73, 242, 37, 16" Text="사업장" />
+                                      <uc:OcrTextInfo Region="112, 242, 9, 16" Text="명" />
+                                      <uc:OcrTextInfo Region="152, 244, 26, 13" Text="동원" />
+                                      <uc:OcrTextInfo Region="182, 244, 57, 13" Text="시스템즈" />
+                                      <uc:OcrTextInfo Region="241, 240, 6, 19" Text="(" />
+                                      <uc:OcrTextInfo Region="249, 240, 8, 19" Text="주" />
+                                      <uc:OcrTextInfo Region="259, 240, 5, 19" Text=")" />
+                                      <uc:OcrTextInfo Region="266, 240, 28, 19" Text="아산" />
+                                      <uc:OcrTextInfo Region="296, 240, 28, 19" Text="공장" />
+                                      <uc:OcrTextInfo Region="686, 241, 20, 10" Text="입력" />
+                                      <uc:OcrTextInfo Region="863, 241, 20, 10" Text="입력" />
+                                      <uc:OcrTextInfo Region="141, 273, 15, 18" Text="|" />
+                                      <uc:OcrTextInfo Region="158, 273, 23, 18" Text="아산" />
+                                      <uc:OcrTextInfo Region="183, 273, 26, 18" Text="시청" />
+                                      <uc:OcrTextInfo Region="488, 275, 14, 12" Text="O" />
+                                      <uc:OcrTextInfo Region="515, 275, 23, 12" Text="비고" />
+                                      <uc:OcrTextInfo Region="489, 296, 20, 10" Text="입력" />
+                                      <uc:OcrTextInfo Region="513, 296, 9, 10" Text="한" />
+                                      <uc:OcrTextInfo Region="529, 292, 26, 14" Text="내용" />
+                                      <uc:OcrTextInfo Region="557, 292, 5, 14" Text="은" />
+                                      <uc:OcrTextInfo Region="569, 296, 21, 10" Text="해당" />
+                                      <uc:OcrTextInfo Region="599, 292, 21, 14" Text="연도" />
+                                      <uc:OcrTextInfo Region="622, 292, 20, 14" Text="에만" />
+                                      <uc:OcrTextInfo Region="647, 292, 20, 14" Text="적용" />
+                                      <uc:OcrTextInfo Region="669, 292, 6, 14" Text="," />
+                                      <uc:OcrTextInfo Region="680, 296, 21, 10" Text="다음" />
+                                      <uc:OcrTextInfo Region="707, 292, 23, 14" Text="연도" />
+                                      <uc:OcrTextInfo Region="732, 292, 8, 14" Text="로" />
+                                      <uc:OcrTextInfo Region="747, 292, 23, 14" Text="복사" />
+                                      <uc:OcrTextInfo Region="772, 292, 20, 14" Text="되지" />
+                                      <uc:OcrTextInfo Region="799, 292, 43, 14" Text="않습니다" />
+                                      <uc:OcrTextInfo Region="844, 292, 3, 14" Text="." />
+                                      <uc:OcrTextInfo Region="74, 277, 23, 11" Text="관할" />
+                                      <uc:OcrTextInfo Region="99, 277, 21, 11" Text="관청" />
+                                      <uc:OcrTextInfo Region="913, 288, 26, 15" Text="저장" />
+                                      <uc:OcrTextInfo Region="75, 308, 22, 16" Text="조사" />
+                                      <uc:OcrTextInfo Region="102, 311, 20, 11" Text="년도" />
+                                      <uc:OcrTextInfo Region="152, 313, 31, 10" Text="2021" />
+                                      <uc:OcrTextInfo Region="515, 352, 8, 10" Text="비" />
+                                      <uc:OcrTextInfo Region="82, 372, 29, 16" Text="시설" />
+                                      <uc:OcrTextInfo Region="113, 372, 18, 16" Text="현황" />
+                                      <uc:OcrTextInfo Region="515, 384, 9, 8" Text="고" />
+                                      <uc:OcrTextInfo Region="209, 406, 36, 11" Text="배출구" />
+                                      <uc:OcrTextInfo Region="398, 408, 14, 8" Text="28" />
+                                      <uc:OcrTextInfo Region="418, 406, 10, 11" Text="개" />
+                                      <uc:OcrTextInfo Region="75, 435, 29, 14" Text="시설" />
+                                      <uc:OcrTextInfo Region="106, 435, 18, 14" Text="현황" />
+                                      <uc:OcrTextInfo Region="202, 434, 26, 16" Text="방지" />
+                                      <uc:OcrTextInfo Region="231, 436, 23, 13" Text="시설" />
+                                      <uc:OcrTextInfo Region="398, 439, 14, 8" Text="18" />
+                                      <uc:OcrTextInfo Region="418, 437, 10, 11" Text="개" />
+                                      <uc:OcrTextInfo Region="491, 435, 25, 13" Text="연료" />
+                                      <uc:OcrTextInfo Region="518, 435, 30, 13" Text="사용량" />
+                                      <uc:OcrTextInfo Region="562, 439, 15, 16" Text="M" />
+                                      <uc:OcrTextInfo Region="582, 444, 21, 10" Text="연료" />
+                                      <uc:OcrTextInfo Region="606, 444, 9, 10" Text="는" />
+                                      <uc:OcrTextInfo Region="618, 444, 20, 10" Text="전기" />
+                                      <uc:OcrTextInfo Region="640, 439, 11, 16" Text="만" />
+                                      <uc:OcrTextInfo Region="653, 439, 20, 16" Text="사용" />
+                                      <uc:OcrTextInfo Region="509, 454, 21, 8" Text="예외" />
+                                      <uc:OcrTextInfo Region="201, 464, 35, 17" Text="배출" />
+                                      <uc:OcrTextInfo Region="238, 464, 15, 16" Text="시설" />
+                                      <uc:OcrTextInfo Region="398, 470, 13, 8" Text="39" />
+                                      <uc:OcrTextInfo Region="418, 468, 10, 11" Text="개" />
+                                      <uc:OcrTextInfo Region="492, 473, 33, 10" Text="소각량" />
+                                      <uc:OcrTextInfo Region="530, 473, 16, 8" Text="예외" />
+                                      <uc:OcrTextInfo Region="556, 469, 21, 16" Text="□" />
+                                      <uc:OcrTextInfo Region="579, 469, 9, 16" Text="페" />
+                                      <uc:OcrTextInfo Region="590, 469, 23, 16" Text="가스" />
+                                      <uc:OcrTextInfo Region="615, 469, 24, 16" Text="소각" />
+                                      <uc:OcrTextInfo Region="641, 469, 23, 16" Text="시설" />
+                                      <uc:OcrTextInfo Region="666, 469, 32, 16" Text="소각량" />
+                                      <uc:OcrTextInfo Region="700, 469, 10, 16" Text="은" />
+                                      <uc:OcrTextInfo Region="713, 473, 21, 10" Text="알수" />
+                                      <uc:OcrTextInfo Region="737, 473, 21, 10" Text="없음" />
+                                      <uc:OcrTextInfo Region="61, 516, 5, 4" Text="O" />
+                                      <uc:OcrTextInfo Region="81, 513, 27, 8" Text="2021" />
+                                      <uc:OcrTextInfo Region="114, 511, 8, 11" Text="년" />
+                                      <uc:OcrTextInfo Region="131, 511, 23, 11" Text="월별" />
+                                      <uc:OcrTextInfo Region="157, 507, 34, 17" Text="운영" />
+                                      <uc:OcrTextInfo Region="193, 507, 22, 17" Text="기록" />
+                                      <uc:OcrTextInfo Region="219, 511, 22, 11" Text="입력" />
+                                      <uc:OcrTextInfo Region="250, 507, 22, 17" Text="현황" />
+                                      <uc:OcrTextInfo Region="274, 507, 7, 17" Text="(" />
+                                      <uc:OcrTextInfo Region="295, 511, 21, 11" Text="입력기" />
+                                      <uc:OcrTextInfo Region="318, 507, 14, 17" Text="한" />
+                                      <uc:OcrTextInfo Region="334, 507, 25, 17" Text="내에" />
+                                      <uc:OcrTextInfo Region="364, 507, 22, 17" Text="운영" />
+                                      <uc:OcrTextInfo Region="388, 507, 31, 17" Text="기록" />
+                                      <uc:OcrTextInfo Region="421, 511, 22, 11" Text="입력" />
+                                      <uc:OcrTextInfo Region="448, 507, 22, 17" Text="여부" />
+                                      <uc:OcrTextInfo Region="472, 507, 4, 17" Text=")" />
+                                      <uc:OcrTextInfo Region="111, 544, 9, 10" Text="월" />
+                                      <uc:OcrTextInfo Region="204, 545, 3, 8" Text="1" />
+                                      <uc:OcrTextInfo Region="211, 544, 8, 10" Text="월" />
+                                      <uc:OcrTextInfo Region="269, 545, 4, 8" Text="2" />
+                                      <uc:OcrTextInfo Region="276, 544, 9, 10" Text="월" />
+                                      <uc:OcrTextInfo Region="326, 541, 12, 12" Text="3" />
+                                      <uc:OcrTextInfo Region="341, 544, 8, 9" Text="월" />
+                                      <uc:OcrTextInfo Region="398, 545, 6, 8" Text="4" />
+                                      <uc:OcrTextInfo Region="406, 544, 8, 10" Text="월" />
+                                      <uc:OcrTextInfo Region="464, 545, 4, 8" Text="5" />
+                                      <uc:OcrTextInfo Region="471, 544, 8, 10" Text="월" />
+                                      <uc:OcrTextInfo Region="529, 545, 5, 8" Text="6" />
+                                      <uc:OcrTextInfo Region="536, 544, 9, 10" Text="월" />
+                                      <uc:OcrTextInfo Region="593, 545, 5, 8" Text="7" />
+                                      <uc:OcrTextInfo Region="600, 544, 9, 10" Text="월" />
+                                      <uc:OcrTextInfo Region="658, 545, 5, 8" Text="8" />
+                                      <uc:OcrTextInfo Region="665, 544, 9, 10" Text="월" />
+                                      <uc:OcrTextInfo Region="722, 545, 5, 8" Text="9" />
+                                      <uc:OcrTextInfo Region="730, 544, 9, 10" Text="월" />
+                                      <uc:OcrTextInfo Region="779, 541, 18, 12" Text="10" />
+                                      <uc:OcrTextInfo Region="799, 541, 7, 12" Text="월" />
+                                      <uc:OcrTextInfo Region="850, 545, 10, 8" Text="11" />
+                                      <uc:OcrTextInfo Region="864, 544, 8, 9" Text="월" />
+                                      <uc:OcrTextInfo Region="910, 541, 16, 12" Text="12" />
+                                      <uc:OcrTextInfo Region="928, 541, 9, 12" Text="월" />
+                                      <uc:OcrTextInfo Region="90, 567, 29, 15" Text="가동" />
+                                      <uc:OcrTextInfo Region="121, 568, 14, 13" Text="시간" />
+                                      <uc:OcrTextInfo Region="196, 570, 32, 10" Text="미입력" />
+                                      <uc:OcrTextInfo Region="261, 570, 32, 10" Text="미입력" />
+                                      <uc:OcrTextInfo Region="326, 570, 32, 10" Text="미입력" />
+                                      <uc:OcrTextInfo Region="391, 570, 32, 10" Text="미입력" />
+                                      <uc:OcrTextInfo Region="456, 570, 32, 10" Text="미입력" />
+                                      <uc:OcrTextInfo Region="520, 570, 32, 10" Text="미입력" />
+                                      <uc:OcrTextInfo Region="585, 570, 32, 10" Text="미입력" />
+                                      <uc:OcrTextInfo Region="93, 597, 21, 10" Text="운전" />
+                                      <uc:OcrTextInfo Region="117, 596, 22, 11" Text="사항" />
+                                      <uc:OcrTextInfo Region="196, 597, 32, 10" Text="미입력" />
+                                      <uc:OcrTextInfo Region="261, 597, 32, 10" Text="미입력" />
+                                      <uc:OcrTextInfo Region="326, 597, 32, 10" Text="미입력" />
+                                      <uc:OcrTextInfo Region="391, 597, 32, 10" Text="미입력" />
+                                      <uc:OcrTextInfo Region="456, 597, 32, 10" Text="미입력" />
+                                      <uc:OcrTextInfo Region="520, 597, 32, 10" Text="미입력" />
+                                      <uc:OcrTextInfo Region="585, 597, 32, 10" Text="미입력" />
+                                      <uc:OcrTextInfo Region="19, 707, 13, 11" Text="-" />
+                                      <uc:OcrTextInfo Region="43, 705, 17, 13" Text="조사" />
+                                      <uc:OcrTextInfo Region="62, 705, 26, 13" Text="년도" />
+                                      <uc:OcrTextInfo Region="90, 705, 17, 13" Text="선택" />
+                                      <uc:OcrTextInfo Region="128, 708, 12, 11" Text="-" />
+                                      <uc:OcrTextInfo Region="147, 710, 17, 9" Text="초기" />
+                                      <uc:OcrTextInfo Region="167, 709, 25, 13" Text="화면" />
+                                      <uc:OcrTextInfo Region="21, 765, 24, 10" Text="상담" />
+                                      <uc:OcrTextInfo Region="53, 762, 20, 14" Text="시간" />
+                                      <uc:OcrTextInfo Region="79, 767, 1, 6" Text=":" />
+                                      <uc:OcrTextInfo Region="88, 765, 12, 9" Text="09" />
+                                      <uc:OcrTextInfo Region="103, 767, 1, 6" Text=":" />
+                                      <uc:OcrTextInfo Region="107, 765, 34, 9" Text="30-11" />
+                                      <uc:OcrTextInfo Region="146, 767, 1, 6" Text=":" />
+                                      <uc:OcrTextInfo Region="149, 762, 12, 14" Text="30" />
+                                      <uc:OcrTextInfo Region="163, 762, 5, 14" Text="," />
+                                      <uc:OcrTextInfo Region="170, 762, 16, 14" Text="14" />
+                                      <uc:OcrTextInfo Region="189, 767, 1, 6" Text=":" />
+                                      <uc:OcrTextInfo Region="192, 762, 14, 14" Text="00" />
+                                      <uc:OcrTextInfo Region="208, 762, 8, 14" Text="~" />
+                                      <uc:OcrTextInfo Region="218, 762, 10, 14" Text="17" />
+                                      <uc:OcrTextInfo Region="230, 762, 3, 14" Text=":" />
+                                      <uc:OcrTextInfo Region="235, 762, 13, 14" Text="00" />
+                                      <uc:OcrTextInfo Region="250, 762, 3, 14" Text="," />
+                                      <uc:OcrTextInfo Region="265, 765, 24, 10" Text="상담" />
+                                      <uc:OcrTextInfo Region="296, 765, 23, 10" Text="번호" />
+                                      <uc:OcrTextInfo Region="323, 767, 1, 6" Text=":" />
+                                      <uc:OcrTextInfo Region="330, 762, 83, 14" Text="043-279-4592" />
+                                      <uc:OcrTextInfo Region="415, 762, 3, 14" Text="." />
+                                      <uc:OcrTextInfo Region="426, 765, 30, 10" Text="4593." />
+                                      <uc:OcrTextInfo Region="464, 765, 30, 10" Text="4594." />
+                                      <uc:OcrTextInfo Region="502, 765, 30, 10" Text="4595." />
+                                      <uc:OcrTextInfo Region="540, 765, 30, 10" Text="4596." />
+                                      <uc:OcrTextInfo Region="578, 765, 26, 9" Text="4597" />
+                                    </scg:List>
+                                  </uc:CVCache.OcrTexts>
+                                </uc:CVCache>
+                              </p:CVRefresh.DesignTimeCache>
+                            </p:CVRefresh>
+                          </ActivityAction>
+                        </ui:RetryScope.ActivityBody>
+                        <ui:RetryScope.Condition>
+                          <ActivityFunc x:TypeArguments="x:Boolean">
+                            <p:CvElementExistsWithDescriptor Descriptor="[&quot;Target: Text '운영 기록' (587,70,35,15)&quot; +&#xA;&quot;Anchor: Text '사업장 현황 / 시설' (452,67,109,19)&quot; +&#xA;&quot;Anchor: Text 'ASEMS 대기 배출원 관리 시스템' (17,50,298,43)&quot;]" DesignTimeScaleFactor="1" DisplayName="CV Element Exists - Text" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="CvElementExistsWithDescriptor_1" InformativeScreenshot="f50d31294eb2520ba67338ed6a31bab8" Version="V1">
+                              <p:CvElementExistsWithDescriptor.DesignTimeDescriptor>
+                                <uc:CvDescriptor>
+                                  <uc:CvDescriptor.Anchors>
+                                    <x:Array Type="uc:CvElementDescriptor">
+                                      <uc:CvElementDescriptor DesignTimeArea="452, 67, 109, 19" ElementType="Text" Text="사업장 현황 / 시설" />
+                                      <uc:CvElementDescriptor DesignTimeArea="17, 50, 298, 43" ElementType="Text" Text="ASEMS 대기 배출원 관리 시스템" />
+                                    </x:Array>
+                                  </uc:CvDescriptor.Anchors>
+                                  <uc:CvDescriptor.Target>
+                                    <uc:CvElementDescriptor DesignTimeArea="587, 70, 35, 15" ElementType="Text" Text="운영 기록" />
+                                  </uc:CvDescriptor.Target>
+                                </uc:CvDescriptor>
+                              </p:CvElementExistsWithDescriptor.DesignTimeDescriptor>
+                            </p:CvElementExistsWithDescriptor>
+                          </ActivityFunc>
+                        </ui:RetryScope.Condition>
+                      </ui:RetryScope>
+                      <p:CvClickWithDescriptor DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" Descriptor="[&quot;Target: Text '운영 기록' (587,70,35,15)&quot; +&#xA;&quot;Anchor: Text '사업장 현황 / 시설' (452,67,109,19)&quot; +&#xA;&quot;Anchor: Text 'ASEMS 대기 배출원 관리 시스템' (17,50,298,43)&quot;]" DesignTimeScaleFactor="1" DisplayName="CV Click - Text" sap:VirtualizedContainerService.HintSize="400,106" sap2010:WorkflowViewState.IdRef="CvClickWithDescriptor_2" InformativeScreenshot="f50d31294eb2520ba67338ed6a31bab8" KeyModifiers="None" MouseButton="BTN_LEFT" Version="V1">
+                        <p:CvClickWithDescriptor.CursorPosition>
+                          <ui:CursorPosition Position="Center">
+                            <ui:CursorPosition.OffsetX>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:CursorPosition.OffsetX>
+                            <ui:CursorPosition.OffsetY>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:CursorPosition.OffsetY>
+                          </ui:CursorPosition>
+                        </p:CvClickWithDescriptor.CursorPosition>
+                        <p:CvClickWithDescriptor.DesignTimeDescriptor>
+                          <uc:CvDescriptor>
+                            <uc:CvDescriptor.Anchors>
+                              <x:Array Type="uc:CvElementDescriptor">
+                                <uc:CvElementDescriptor DesignTimeArea="452, 67, 109, 19" ElementType="Text" Text="사업장 현황 / 시설" />
+                                <uc:CvElementDescriptor DesignTimeArea="17, 50, 298, 43" ElementType="Text" Text="ASEMS 대기 배출원 관리 시스템" />
+                              </x:Array>
+                            </uc:CvDescriptor.Anchors>
+                            <uc:CvDescriptor.Target>
+                              <uc:CvElementDescriptor DesignTimeArea="587, 70, 35, 15" ElementType="Text" Text="운영 기록" />
+                            </uc:CvDescriptor.Target>
+                          </uc:CvDescriptor>
+                        </p:CvClickWithDescriptor.DesignTimeDescriptor>
+                        <p:CvClickWithDescriptor.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}">
+                            <ui:Target.TimeoutMS>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:Target.TimeoutMS>
+                            <ui:Target.WaitForReady>
+                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                            </ui:Target.WaitForReady>
+                          </ui:Target>
+                        </p:CvClickWithDescriptor.Target>
+                      </p:CvClickWithDescriptor>
+                    </Sequence>
+                  </ActivityAction>
+                </p:CVScope.Body>
+                <p:CVScope.DesignTimeCache>
+                  <uc:CVCache OcrText="{x:Null}" OcrTexts="{x:Null}" ScreenshotGuid="{x:Null}" ServerVersion="{x:Null}" InformativeScreenshot="713c22c867b507dbd957a678d99ad8d1" LogicalPosition="134, 69" Position="134, 69" ScaleFactor="1">
+                    <uc:CVCache.CvUiElements>
+                      <scg:List x:TypeArguments="uc:CvElementInfo" Capacity="64">
+                        <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="767, 176, 98, 23" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="867, 176, 100, 22" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="118, 697, 106, 27" Score="1" />
+                        <uc:CvElementInfo Category="Icon" Confidence="DesignTime" Region="6, 5, 22, 21" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="564, 436, 397, 26" Score="1" />
+                        <uc:CvElementInfo Category="ArrowButton" Confidence="DesignTime" Region="1104, 135, 18, 19" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="547, 465, 416, 24" Score="1" />
+                        <uc:CvElementInfo Category="ArrowButton" Confidence="DesignTime" Region="1104, 682, 19, 19" Score="1" />
+                        <uc:CvElementInfo Category="MaximizeButton" Confidence="DesignTime" Region="1053, 6, 20, 18" Score="1" />
+                        <uc:CvElementInfo Category="CloseButton" Confidence="DesignTime" Region="1099, 6, 18, 17" Score="1" />
+                        <uc:CvElementInfo Category="Icon" Confidence="DesignTime" Region="16, 702, 18, 16" Score="1" />
+                        <uc:CvElementInfo Category="CheckBox" Confidence="DesignTime" Region="561, 443, 14, 14" Score="1" />
+                        <uc:CvElementInfo Category="Icon" Confidence="DesignTime" Region="124, 703, 18, 16" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="49, 396, 105, 93" Score="1" />
+                        <uc:CvElementInfo Category="Icon" Confidence="DesignTime" Region="53, 178, 22, 22" Score="1" />
+                        <uc:CvElementInfo Category="MinimizeButton" Confidence="DesignTime" Region="1007, 6, 21, 17" Score="1" />
+                        <uc:CvElementInfo Category="Icon" Confidence="DesignTime" Region="483, 176, 22, 22" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="484, 205, 121, 54" Score="1" />
+                        <uc:CvElementInfo Category="CloseButton" Confidence="DesignTime" Region="204, 705, 13, 13" Score="1" />
+                        <uc:CvElementInfo Category="CheckBox" Confidence="DesignTime" Region="562, 470, 13, 14" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="888, 280, 77, 26" Score="1" />
+                        <uc:CvElementInfo Category="Icon" Confidence="DesignTime" Region="484, 270, 21, 20" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="279, 202, 96, 34" Score="1" />
+                        <uc:CvElementInfo Category="Icon" Confidence="DesignTime" Region="53, 368, 23, 22" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="9, 698, 111, 24" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="370, 174, 74, 25" Score="1" />
+                        <uc:CvElementInfo Category="Icon" Confidence="DesignTime" Region="52, 505, 22, 21" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="375, 203, 68, 32" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="52, 505, 22, 21" Score="1" />
+                        <uc:CvElementInfo Category="Icon" Confidence="DesignTime" Region="624, 64, 22, 23" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="52, 368, 23, 21" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="561, 310, 397, 124" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="887, 280, 77, 26" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="213, 699, 907, 33" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="374, 202, 70, 33" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="484, 269, 22, 20" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="368, 174, 76, 25" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="483, 176, 22, 21" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="52, 177, 22, 22" Score="1" />
+                        <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="872, 58, 154, 33" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="130, 235, 307, 29" Score="1" />
+                        <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="445, 59, 125, 32" Score="1" />
+                        <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="447, 60, 123, 32" Score="1" />
+                        <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="875, 59, 149, 34" Score="1" />
+                        <uc:CvElementInfo Category="RadioButton" Confidence="Runtime" Region="53, 505, 21, 21" Score="1" />
+                        <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="1007, 6, 21, 17" Score="1" />
+                        <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="625, 64, 22, 24" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="447, 60, 120, 31" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="Runtime" Region="146, 235, 298, 30" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="872, 58, 150, 34" Score="1" />
+                        <uc:CvElementInfo Category="RadioButton" Confidence="Runtime" Region="484, 269, 20, 21" Score="1" />
+                        <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="561, 442, 15, 15" Score="1" />
+                        <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="581, 62, 59, 28" Score="1" />
+                        <uc:CvElementInfo Category="MaximizeButton" Confidence="Runtime" Region="1009, 7, 19, 16" Score="1" />
+                        <uc:CvElementInfo Category="RadioButton" Confidence="Runtime" Region="483, 175, 23, 22" Score="1" />
+                        <uc:CvElementInfo Category="RadioButton" Confidence="Runtime" Region="54, 367, 21, 22" Score="1" />
+                      </scg:List>
+                    </uc:CVCache.CvUiElements>
+                  </uc:CVCache>
+                </p:CVScope.DesignTimeCache>
+                <p:CVScope.OCREngine>
+                  <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd:Rectangle, x:String))">
+                    <ActivityFunc.Argument>
+                      <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+                    </ActivityFunc.Argument>
+                    <ui:GoogleCloudOCR FilterRegion="{x:Null}" Output="{x:Null}" Profile="{x:Null}" Scale="{x:Null}" Text="{x:Null}" ApiKey="[apikey]" ComputeSkewAngle="False" DisplayName="Google Cloud Vision OCR" ExtractWords="True" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="GoogleCloudOCR_2" Image="[Image]" Language="ko" ResizeToApiLimits="False" />
+                  </ActivityFunc>
+                </p:CVScope.OCREngine>
+                <p:CVScope.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" InformativeScreenshot="f4ba7c4bc57adfe3a83d280853b08182" WaitForReady="INTERACTIVE">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                  </ui:Target>
+                </p:CVScope.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </p:CVScope>
+              <p:CVScope ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DisplayName="CV Screen Scope 'AfxWnd42s'" sap:VirtualizedContainerService.HintSize="521,384" sap2010:WorkflowViewState.IdRef="CVScope_3" Server="http://cv.dongwon.com:8501/v1/models/controls_detection:predict" Version="V1">
+                <p:CVScope.Body>
+                  <ActivityAction x:TypeArguments="x:Object">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="x:Object" Name="CVSessionData" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                      <p:CvClickWithDescriptor DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" Descriptor="[&quot;Target: InputBox (586,6,135,23)&quot; +&#xA;&quot;Anchor: Text '운전 사항 입력 메뉴얼' (460,13,120,10)&quot;]" DesignTimeScaleFactor="1" DisplayName="CV Click - InputBox" sap:VirtualizedContainerService.HintSize="400,106" sap2010:WorkflowViewState.IdRef="CvClickWithDescriptor_5" InformativeScreenshot="5233cd88f6f8e98b07aaec5774b545aa" KeyModifiers="None" MouseButton="BTN_LEFT" Version="V1">
+                        <p:CvClickWithDescriptor.CursorPosition>
+                          <ui:CursorPosition Position="Center">
+                            <ui:CursorPosition.OffsetX>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:CursorPosition.OffsetX>
+                            <ui:CursorPosition.OffsetY>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:CursorPosition.OffsetY>
+                          </ui:CursorPosition>
+                        </p:CvClickWithDescriptor.CursorPosition>
+                        <p:CvClickWithDescriptor.DesignTimeDescriptor>
+                          <uc:CvDescriptor>
+                            <uc:CvDescriptor.Anchors>
+                              <x:Array Type="uc:CvElementDescriptor">
+                                <uc:CvElementDescriptor DesignTimeArea="460, 13, 120, 10" ElementType="Text" Text="운전 사항 입력 메뉴얼" />
+                              </x:Array>
+                            </uc:CvDescriptor.Anchors>
+                            <uc:CvDescriptor.Target>
+                              <uc:CvElementDescriptor DesignTimeArea="586, 6, 135, 23" ElementType="InputBox" />
+                            </uc:CvDescriptor.Target>
+                          </uc:CvDescriptor>
+                        </p:CvClickWithDescriptor.DesignTimeDescriptor>
+                        <p:CvClickWithDescriptor.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}">
+                            <ui:Target.TimeoutMS>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:Target.TimeoutMS>
+                            <ui:Target.WaitForReady>
+                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                            </ui:Target.WaitForReady>
+                          </ui:Target>
+                        </p:CvClickWithDescriptor.Target>
+                      </p:CvClickWithDescriptor>
+                    </Sequence>
+                  </ActivityAction>
+                </p:CVScope.Body>
+                <p:CVScope.DesignTimeCache>
+                  <uc:CVCache OcrText="{x:Null}" OcrTexts="{x:Null}" ScreenshotGuid="{x:Null}" ServerVersion="{x:Null}" InformativeScreenshot="1533a52e89263187b59280159d49a328" LogicalPosition="177, 420" Position="177, 420" ScaleFactor="1">
+                    <uc:CVCache.CvUiElements>
+                      <scg:List x:TypeArguments="uc:CvElementInfo" Capacity="128">
+                        <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="755, 175, 88, 20" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="756, 568, 89, 19" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="756, 359, 87, 20" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="756, 336, 87, 20" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="756, 199, 88, 20" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="757, 382, 87, 20" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="757, 405, 87, 20" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="842, 5, 60, 23" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="757, 475, 87, 20" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="782, 4, 59, 24" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="757, 313, 87, 20" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="757, 452, 86, 20" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="757, 221, 87, 20" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="757, 267, 87, 20" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="903, 5, 59, 23" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="757, 429, 87, 20" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="757, 290, 86, 20" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="757, 244, 87, 20" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="756, 522, 87, 20" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="756, 498, 88, 21" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="757, 544, 87, 20" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="721, 5, 59, 23" Score="1" />
+                        <uc:CvElementInfo Category="Icon" Confidence="DesignTime" Region="432, 590, 17, 16" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="585, 6, 136, 23" Score="1" />
+                        <uc:CvElementInfo Category="Icon" Confidence="DesignTime" Region="304, 590, 17, 16" Score="1" />
+                        <uc:CvElementInfo Category="Icon" Confidence="DesignTime" Region="197, 590, 18, 15" Score="1" />
+                        <uc:CvElementInfo Category="Icon" Confidence="DesignTime" Region="13, 8, 20, 18" Score="1" />
+                        <uc:CvElementInfo Category="Icon" Confidence="DesignTime" Region="465, 115, 16, 18" Score="1" />
+                        <uc:CvElementInfo Category="CloseButton" Confidence="DesignTime" Region="407, 593, 14, 14" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="428, 587, 159, 24" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="5, 590, 18, 16" Score="1" />
+                        <uc:CvElementInfo Category="Icon" Confidence="DesignTime" Region="113, 589, 17, 16" Score="1" />
+                        <uc:CvElementInfo Category="Icon" Confidence="DesignTime" Region="496, 115, 28, 21" Score="1" />
+                        <uc:CvElementInfo Category="Icon" Confidence="DesignTime" Region="358, 117, 26, 19" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="304, 585, 124, 27" Score="1" />
+                        <uc:CvElementInfo Category="RadioButton" Confidence="DesignTime" Region="179, 114, 18, 20" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="396, 112, 86, 25" Score="1" />
+                        <uc:CvElementInfo Category="Icon" Confidence="DesignTime" Region="5, 590, 17, 15" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="DesignTime" Region="6, 111, 59, 27" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="131, 382, 90, 20" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="586, 6, 135, 23" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="131, 428, 92, 21" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="130, 405, 93, 20" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="DesignTime" Region="131, 359, 91, 20" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="296, 111, 52, 26" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="486, 111, 49, 28" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="15, 588, 88, 20" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="194, 587, 106, 23" Score="1" />
+                        <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="9, 47, 11, 18" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="112, 588, 18, 17" Score="1" />
+                        <uc:CvElementInfo Category="RadioButton" Confidence="Runtime" Region="65, 116, 15, 18" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="348, 111, 48, 27" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="13, 8, 20, 18" Score="1" />
+                        <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="65, 116, 16, 18" Score="1" />
+                        <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="407, 592, 14, 14" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="Runtime" Region="130, 452, 92, 20" Score="1" />
+                        <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="306, 116, 15, 15" Score="1" />
+                        <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="179, 114, 17, 19" Score="1" />
+                        <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="734, 7, 35, 19" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="Runtime" Region="132, 336, 90, 19" Score="1" />
+                        <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="64, 114, 17, 20" Score="1" />
+                        <uc:CvElementInfo Category="MaximizeButton" Confidence="Runtime" Region="13, 7, 21, 19" Score="1" />
+                        <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="196, 588, 18, 16" Score="1" />
+                        <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="13, 9, 21, 17" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="Runtime" Region="723, 5, 57, 22" Score="1" />
+                        <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="113, 588, 17, 16" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="Runtime" Region="128, 199, 97, 19" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="Runtime" Region="128, 312, 95, 21" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="Runtime" Region="129, 222, 95, 19" Score="1" />
+                        <uc:CvElementInfo Category="MinimizeButton" Confidence="Runtime" Region="13, 8, 20, 18" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="Runtime" Region="131, 544, 92, 19" Score="1" />
+                        <uc:CvElementInfo Category="InputBox" Confidence="Runtime" Region="485, 111, 51, 26" Score="1" />
+                      </scg:List>
+                    </uc:CVCache.CvUiElements>
+                  </uc:CVCache>
+                </p:CVScope.DesignTimeCache>
+                <p:CVScope.OCREngine>
+                  <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd:Rectangle, x:String))">
+                    <ActivityFunc.Argument>
+                      <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+                    </ActivityFunc.Argument>
+                    <ui:GoogleCloudOCR FilterRegion="{x:Null}" Output="{x:Null}" Profile="{x:Null}" Scale="{x:Null}" Text="{x:Null}" ApiKey="[apikey]" ComputeSkewAngle="False" DisplayName="Google Cloud Vision OCR" ExtractWords="True" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="GoogleCloudOCR_3" Image="[Image]" Language="ko" ResizeToApiLimits="False" />
+                  </ActivityFunc>
+                </p:CVScope.OCREngine>
+                <p:CVScope.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="644dd34968f209a9f984cc51aff3c52b" Selector="&lt;wnd cls='AfxFrameOrView42s' title='시설운전사항' /&gt;&lt;wnd cls='AfxWnd42s' idx='48' /&gt;" WaitForReady="INTERACTIVE">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                  </ui:Target>
+                </p:CVScope.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </p:CVScope>
+              <ui:UiElementExists DisplayName="Element Exists 'menu button'" Exists="[ErrFind]" sap:VirtualizedContainerService.HintSize="521,68" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+                <ui:UiElementExists.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="&lt;html title='대기배출원관리시스템' /&gt;&lt;wnd cls='AfxFrameOrView42s' title='대기배출원관리시스템' /&gt;&lt;wnd cls='AfxWnd42s' idx='6' /&gt;" TimeoutMS="3000" WaitForReady="INTERACTIVE" />
+                </ui:UiElementExists.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:UiElementExists>
+              <If Condition="[ErrFind]" sap:VirtualizedContainerService.HintSize="521,345" sap2010:WorkflowViewState.IdRef="If_1">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <Sequence sap:VirtualizedContainerService.HintSize="376,198" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'AfxWnd42s'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT">
+                      <ui:Click.CursorPosition>
+                        <ui:CursorPosition Position="Center">
+                          <ui:CursorPosition.OffsetX>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetX>
+                          <ui:CursorPosition.OffsetY>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetY>
+                        </ui:CursorPosition>
+                      </ui:Click.CursorPosition>
+                      <ui:Click.Target>
+                        <ui:Target Element="{x:Null}" InformativeScreenshot="4cf5693ec1eb3f4a0fc75e079678666a" Selector="&lt;wnd app='mybuilderserver.exe' cls='AfxFrameOrView42s' title='공지사항' /&gt;&lt;wnd cls='AfxWnd42s' idx='1' /&gt;">
+                          <ui:Target.ClippingRegion>
+                            <ui:Region Rectangle="352, 130, 94, 24" />
+                          </ui:Target.ClippingRegion>
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:Click.Target>
+                    </ui:Click>
+                  </Sequence>
+                </If.Then>
+              </If>
+              <ui:UiElementExists DisplayName="Element Exists 'menu button'" Exists="[ErrFind]" sap:VirtualizedContainerService.HintSize="521,106" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
+                <ui:UiElementExists.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="da83c5f820786b381b85ad60886f1246" Selector="&lt;wnd app='mybuilderserver.exe' cls='AfxFrameOrView42s' idx='1' title='공지사항' /&gt;&#xA;&lt;wnd cls='*' idx='2' /&gt;" TimeoutMS="3000" WaitForReady="INTERACTIVE" />
+                </ui:UiElementExists.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:UiElementExists>
+              <If Condition="[ErrFind]" sap:VirtualizedContainerService.HintSize="521,345" sap2010:WorkflowViewState.IdRef="If_2">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <Sequence sap:VirtualizedContainerService.HintSize="376,198" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'AfxWnd42s'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_6" KeyModifiers="None" MouseButton="BTN_LEFT">
+                      <ui:Click.CursorPosition>
+                        <ui:CursorPosition Position="Center">
+                          <ui:CursorPosition.OffsetX>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetX>
+                          <ui:CursorPosition.OffsetY>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetY>
+                        </ui:CursorPosition>
+                      </ui:Click.CursorPosition>
+                      <ui:Click.Target>
+                        <ui:Target Element="{x:Null}" InformativeScreenshot="753afd2430969e8379fcbb4999164d39" Selector="&lt;wnd app='mybuilderserver.exe' cls='AfxFrameOrView42s' title='공지사항' /&gt;&lt;wnd cls='AfxWnd42s' idx='1' /&gt;">
+                          <ui:Target.ClippingRegion>
+                            <ui:Region Rectangle="771, 419, 86, 14" />
+                          </ui:Target.ClippingRegion>
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:Click.Target>
+                    </ui:Click>
+                  </Sequence>
+                </If.Then>
+              </If>
+            </Sequence>
+          </Sequence>
+        </ActivityAction>
+      </ui:OpenBrowser.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:OpenBrowser>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="639,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;SEMS_접속 및 로그인_완료&quot;]" />
+  </Sequence>
+</Activity>

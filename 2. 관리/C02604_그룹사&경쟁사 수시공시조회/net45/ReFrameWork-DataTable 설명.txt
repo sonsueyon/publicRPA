@@ -1,0 +1,11 @@
+Process 구조가 특정 데이터 대상으로 sub process를 수행하는 경우 사용
+- Loop 내에서 sub process를 수행하는 경우 메모리 문제 등으로 인하여 수행속도가 현저히 늦어진다.
+- 이를 해결하기 위하여, sub process를 분리하여 loop 내에서 sub process를 한번씩 수행한 후 close하는 구조로 구성하여한다.
+
+
+Orchestrator Queues 사용하지 않음
+Transaction Status 사용하지 않음
+Input data는 Data Table 이용함
+--> Data Table, Array, List 등으로 변형 가능
+Transaction Item의 타입을 Queue Item에서 Data Row로 변경함
+

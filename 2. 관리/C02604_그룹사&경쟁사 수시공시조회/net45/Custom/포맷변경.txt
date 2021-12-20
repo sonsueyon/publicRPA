@@ -1,0 +1,12 @@
+Sub Main(SheetName As String, FormatText As String)
+'
+' 매크로1 매크로
+'
+    If FormatText = "USD" Then
+        Range("G15:H42").NumberFormat = "[$USD] #,##0.00"
+    Else
+        Range("G15:H42").NumberFormat = "[$CAD] #,##0.00"
+    End If
+
+'
+End Sub

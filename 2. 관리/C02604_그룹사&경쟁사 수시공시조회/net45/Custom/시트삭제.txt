@@ -1,0 +1,9 @@
+Sub 시트삭제()
+'
+' 시트삭제 매크로
+'
+
+'
+    Sheets("Sheet1").Select
+    ActiveWindow.SelectedSheets.Delete
+End Sub

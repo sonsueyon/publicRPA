@@ -1,7 +1,9 @@
 git status 현재 상태보기
 git add --all 추적(변경)대상 올리기
 git commit -am "new project" 변경 확정짓기 메세지는 이유
-git push -u origin master 업로드하기
+git push -u origin mast업로드하기
 https://github.com/sonsueyon/publicRPA/tree/master/C12200_%EC%88%98%EC%A7%80%EC%82%AC%EC%97%85%EC%9E%A5%20%ED%98%84%EC%9E%A5%EA%B7%BC%EB%AC%B4%EC%9E%90%20OT%EC%8B%A4%EC%A0%81%20%EA%B3%B5%EC%A7%80
 
 rpa개발과제 github주소 : https://github.com/sonsueyon/publicRPA/
+
+"AIzaSyCsGLL9IKcvoqrxPYocpX_yYeYhnbrQ6gc"

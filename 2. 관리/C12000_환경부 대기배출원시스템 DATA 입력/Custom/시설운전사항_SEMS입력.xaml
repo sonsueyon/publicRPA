@@ -1,0 +1,283 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="시설운전사항_입력" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_output_폴더경로" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>396,1816</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>시설운전사항_입력_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="시설운전사항_SEMS입력" sap:VirtualizedContainerService.HintSize="376,1756" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;시설운전사항_SEMS입력_시작&quot;]" />
+    <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Image '조사년도입력'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ClickImage_1" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False">
+      <ui:ClickImage.CursorPosition>
+        <ui:CursorPosition Position="Center">
+          <ui:CursorPosition.OffsetX>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetX>
+          <ui:CursorPosition.OffsetY>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetY>
+        </ui:CursorPosition>
+      </ui:ClickImage.CursorPosition>
+      <ui:ClickImage.Image>
+        <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="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" />
+      </ui:ClickImage.Image>
+      <ui:ClickImage.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="&lt;html htmlwindowname='winName1' title='대기배출원관리시스템' /&gt;" WaitForReady="INTERACTIVE">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+        </ui:Target>
+      </ui:ClickImage.Target>
+    </ui:ClickImage>
+    <ui:SetFocus DelayBefore="{x:Null}" DelayMS="{x:Null}" DisplayName="Set Focus 'AfxWnd42s'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="SetFocus_1">
+      <ui:SetFocus.Target>
+        <ui:Target Element="{x:Null}" InformativeScreenshot="1fb1b110478dd4969083574018700725" Selector="&lt;html htmlwindowname='winName1' title='대기배출원관리시스템' /&gt;&lt;wnd cls='AfxFrameOrView42s' title='초기화면' /&gt;&lt;wnd cls='AfxWnd42s' idx='2' /&gt;">
+          <ui:Target.ClippingRegion>
+            <ui:Region Rectangle="574, 34, 62, 24" />
+          </ui:Target.ClippingRegion>
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:SetFocus.Target>
+    </ui:SetFocus>
+    <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Image '시설운전사항'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ClickImage_3" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False">
+      <ui:ClickImage.CursorPosition>
+        <ui:CursorPosition Position="Center">
+          <ui:CursorPosition.OffsetX>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetX>
+          <ui:CursorPosition.OffsetY>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetY>
+        </ui:CursorPosition>
+      </ui:ClickImage.CursorPosition>
+      <ui:ClickImage.Image>
+        <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEUAAAAXCAYAAABdy4LVAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAJGSURBVFhH7ZSrjgJBEEX3/z8DhUJhUCgUCoNCoTAoFKo3Z3ZOUvRUz0CyYpPtm1SmH9VVt27X9FfpmKCLkqCLkqCLkqCLkqCLkqCLkuAjUY7H42ARp9Op3O/3cVbK5XIpu92uPJ/PcaWU6/U6+Gn4uM/3dru9mPHIdTgchnELNSfOkh9zXU7voikK5Nfr9Tj7gckEBa1Wq6FowTnWxHa7HeJQHHt8N5vNsK4g+EczR50PsH8+n8fZq8/j8Xi5APyIX3NawqwoNaGaJDdAsv1+P8zZo2AJQJJxFA24DmGhOIB98hOr5lCfi5zsiNp+TRQKJWCESQC37I2TEEIKGQnQGXQK64z5MrdTBHsW7C/gOcH6nCgAHnYnNZBDUeqzLTRF8cYjcQlwk+yTmP1YUHYrFMO6VncOa8QiDgX5pmQFEzu+IezDhRiAfX4beBHLnPKL9bSQisJhgpAMIiKSpDDEEd6AwgB8iTNndhJCQJgzFh3zAcZwwkTM4Zx9vsT1jXH/HaSiEBCyBLMbXMeAwrUM2CEIqz9xGWvERlzGYi4fMeEUhddHkI88iMuYztH/HUxEIRDJIQo5VPf/jwR8DGtjX1EAY9brcQRr8YxAAIxc/l6AIvGn4FoUfNhzHeNs9FnCRBRIxF8mzk0CvDk7qjYhwczH348xfvW+po8dBJxHTsA4EfBn3XxLaD60GTJRWiY8kxmCg3jjmc2h9rGLfFf4Mo+P8xI+EsV2/ktoceLStNhh7+AjUf4LuigJuigJuigJuigTlPINwLmxelzqGWkAAAAASUVORK5CYII=" />
+      </ui:ClickImage.Image>
+      <ui:ClickImage.Target>
+        <ui:Target Element="{x:Null}" Selector="&lt;html htmlwindowname='winName1' title='대기배출원관리시스템' /&gt;&lt;wnd cls='AfxFrameOrView42s' title='초기화면' /&gt;&lt;wnd cls='AfxWnd42s' idx='2' /&gt;" WaitForReady="INTERACTIVE">
+          <ui:Target.ClippingRegion>
+            <ui:Region Rectangle="446, 68, 64, 17" />
+          </ui:Target.ClippingRegion>
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+        </ui:Target>
+      </ui:ClickImage.Target>
+    </ui:ClickImage>
+    <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Image '운전사항일괄등록'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ClickImage_4" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False">
+      <ui:ClickImage.CursorPosition>
+        <ui:CursorPosition Position="Center">
+          <ui:CursorPosition.OffsetX>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetX>
+          <ui:CursorPosition.OffsetY>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetY>
+        </ui:CursorPosition>
+      </ui:ClickImage.CursorPosition>
+      <ui:ClickImage.Image>
+        <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAMsAAAAVCAYAAADozxpsAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAMgSURBVHhe7Zu/ihRBEMbnKXwD38IHEMRQfAUjE81EEyMzo8vPyMBID7PjTEQw8AxcEI875UTxDwa6KBtt39RgQ1F+XVU927Mz6/bAD5n6vvqqr89iT+SaWzsPw/mrd0Nz4WalUmk5d/lOuHZvN8inuXL7QXh2eByWy2WlUmmZvf8SaC/og4Q/zcGrI9hQqWwztBf0Exd/GmSsVLaZxeJPWPyedz+S8afphAnQNE0S5I8gv0T6+XtftBw+m5PyonrEk0GkNNkvQX5Z48h+i6EyhmQ+/xXmP39Mb1k8F5JzaZ4sVJeUyrHQcpCW8vc9j+zLPc86WPdcWpTv3z6BZWk/bsaiuwRQT+HxWx7vzD45VPMge/i7VSeQpvk1vOch+s5AUJYX1D8U8VPl6+cP27cs8cI5XE9h+bw5FqkcLR9pfc8j+3Ln9qFUzhCYy9IZRoIujkBaxOMhokfzenIIy2fNQKS8OXUCaZo/4umjdw7XkG4h+2MGqk+G1LJA8wjIS+YgPyJ6tR5vnuVL6bmzqcaRGn9P1bQ6Z5X80tCcHFDGILSLYi/LX9Om0l2o8m7VOdGjefvkI03zE6RzkIewcohSnqEYc7bkv12W1CWjes5fGM1LGofXuY+DNM2fQyo7h1TOuhhztmQyy8K/QX3hOTKfI/VSfi2HNETKi+pjgc7Dv4a+lMxZB3hZgHFshrwUK1vqKX+pM2o5pHlB/ZV+0P+x1GVp0bJTGqp7z0g+BPKugpYpZ2ugfgTqjSD/JkHL8vH03bSWJXWxuRee49e8OeexZpJuzbIyciiVZeV4zm15ou4FZQxJXRYDK0Pqmj/nPJ65HlAvB/UgUG/E0iW5/hSlcrxs1LLksmqOp196tJ6c85TK0RgrZ2rn90L/XoHLQls0FnQJqJ5LqZwcrJmkax5LJyzdS6kcwnvu0jNRfQjiopwcv/l3WQ5evAynJ7NOpD/XTbxYLyiDQN4UqD8Xb46cHUFeBOpNgfojyJ8C9UtQXwT5V2GIzBS0B0dvD8PT/f3u14v501y6sRN2Hz0Os9fPK5VKy5O9vXDx+n3xe/ghnAEDKTAvJl5/MAAAAABJRU5ErkJggg==" />
+      </ui:ClickImage.Image>
+      <ui:ClickImage.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="&lt;html htmlwindowname='winName1' title='대기배출원관리시스템' /&gt;" WaitForReady="INTERACTIVE">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+        </ui:Target>
+      </ui:ClickImage.Target>
+    </ui:ClickImage>
+    <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Image 'excel가져오기'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ClickImage_5" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False">
+      <ui:ClickImage.CursorPosition>
+        <ui:CursorPosition Position="Center">
+          <ui:CursorPosition.OffsetX>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetX>
+          <ui:CursorPosition.OffsetY>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetY>
+        </ui:CursorPosition>
+      </ui:ClickImage.CursorPosition>
+      <ui:ClickImage.Image>
+        <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAJIAAAAZCAYAAADaDHeVAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAJOSURBVGhD7ZpBTptBDEbnFJymV+htWPdS5Qpdw4JIqFVpBaIqrbqgUStWmcYpgyzrs8czY7JAHukRYj/7d0ZWVinlzWlNkhVO3r6rZbfb1SRZYfPley5SEkMuUrLM4+PfWuhPgimlwPgoUX2iiJ5nu/39uhdJXhi91+Ae97V4D+nz9xqyBwf5DeQ3NB/FZ9k+/Nov0p9tfa0cLgzEEcj11vc8Tz7CQaCamT4a9G2Ui8RYufCeZ+VHZiQi/NEeFs+LdPhnERqMg/Iy1tB8jsw3ep5VK1mplx69l/A8x8ohIvzRHl0iFskzqDW4x52NIUfD+wxEz7PyIzMSEf5oD5P9Ev1fpKd/ZjgMBOKEzCHX4zR4LsKTINdT3xzLnc0hIvzRHh6OtkgytvIBvc/19iO0eTgy3xz+irByhNW/4XEQqGamT4/lRbKwarQciktaDw3u8ToL5Hrq0fPoVdIcC1TXQL4HVLvST+PFvpE0rIvx9juW16uX+dk+iJkaSeQ8Fj9/3B13kbiPar39juX16lHeG+sxUyPRekT05rzoIskccj1Og+civIa3l0TLobhnDslMDWdm9lmWF4nwXNzIh/L088aQ06CclSe0/Ghdz0fM1BBUNzrfKiGLRLThtQ9hDa75HJlv9Dwe67kI5HlqpaP1WQX1kc9BeD0v99++1kLblGDowlF8lKg+UUTOQ0t0e/OxlpvrTU0wdOEoPkpUnygi57n+fFk/XZ3Xsrn4UJNkhfdnZ/vlBD/mTpIRDj/+r3nyBJxcpDwhJxcpT8Cp9R9LqQdKxeIDWAAAAABJRU5ErkJggg==" />
+      </ui:ClickImage.Image>
+      <ui:ClickImage.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="&lt;html htmlwindowname='winName1' title='대기배출원관리시스템' /&gt;" WaitForReady="INTERACTIVE">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+        </ui:Target>
+      </ui:ClickImage.Target>
+    </ui:ClickImage>
+    <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type Into '파일경로 입력'" EmptyField="False" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_1" SendWindowMessages="False" SimulateType="False" Text="[in_output_폴더경로+&quot;업로드파일.xlsx&quot;]">
+      <ui:TypeInto.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="d2fdb92635a97ebb358f56a6b9102638" Selector="&lt;wnd app='mybuilderserver.exe' cls='#32770' title='엑셀열기' /&gt;&lt;wnd ctrlid='1148' /&gt;" WaitForReady="INTERACTIVE">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+        </ui:Target>
+      </ui:TypeInto.Target>
+    </ui:TypeInto>
+    <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click '열기'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+      <ui:Click.CursorPosition>
+        <ui:CursorPosition Position="Center">
+          <ui:CursorPosition.OffsetX>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetX>
+          <ui:CursorPosition.OffsetY>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetY>
+        </ui:CursorPosition>
+      </ui:Click.CursorPosition>
+      <ui:Click.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="00fe9282bdeaefe82e4787780cdbd5c5" Selector="&lt;wnd app='mybuilderserver.exe' cls='#32770' title='엑셀열기' /&gt;&lt;wnd ctrlid='1' title='열기(&amp;amp;O)' /&gt;" WaitForReady="INTERACTIVE">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+        </ui:Target>
+      </ui:Click.Target>
+    </ui:Click>
+    <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Image '검사'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ClickImage_6" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False">
+      <ui:ClickImage.CursorPosition>
+        <ui:CursorPosition Position="Center">
+          <ui:CursorPosition.OffsetX>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetX>
+          <ui:CursorPosition.OffsetY>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetY>
+        </ui:CursorPosition>
+      </ui:ClickImage.CursorPosition>
+      <ui:ClickImage.Image>
+        <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFUAAAAUCAYAAAD88XGTAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAF0SURBVFhH7ZYxTgMxEEV9Cm7ALTgADTVXSEVFTUNFxxVyBiK6iIoWKIiEiIiiICIBShFWoK122FliBMvYHuOJvZFcPCkZ/0z0X5woqqoqyMhwcTWG7f1jyFKFKMsPKN8LUDuHoJona0YpZcSUp+a+SO3hUBRvUCwX8aTaoIpzZbhyUaXWQl9fnlZS6yubkqY4Y0bhynH3hKJv6fN82h2pFFS2jSvH3RPKH6nNICFYnDOjcOW4e0ToilRT6Y2TWgv9LXU1iE1TmJgjtjONzoTukSSZVCzqKsuRoTO2rH4vDZWRJJrU/xRz5drnpjz3/aRI/vUPoYtS8T9qdKlY0AdqB2I6o+a2PdKg1MfZfXyp1JwiS2UiIdW1o32epf6AynJen1Iq/p5+S0XDMcCC1JzCJ2tDao8LLXTycPslFR/MJqO1gwV9oHb4IrXHBToc313D+XAIW3tHoEY3l5AJ52wwgN2DU+id9OsPE69rJhi8oSgUAOATat1KR4AbeIAAAAAASUVORK5CYII=" />
+      </ui:ClickImage.Image>
+      <ui:ClickImage.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="&lt;html htmlwindowname='winName1' title='대기배출원관리시스템' /&gt;" WaitForReady="INTERACTIVE">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+        </ui:Target>
+      </ui:ClickImage.Target>
+    </ui:ClickImage>
+    <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click '확인'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+      <ui:Click.CursorPosition>
+        <ui:CursorPosition Position="Center">
+          <ui:CursorPosition.OffsetX>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetX>
+          <ui:CursorPosition.OffsetY>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetY>
+        </ui:CursorPosition>
+      </ui:Click.CursorPosition>
+      <ui:Click.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="78318fff92ee175f8f6b696ac1bf85f4" Selector="&lt;wnd app='mybuilderserver.exe' cls='#32770' title='알림' /&gt;&lt;wnd ctrlid='2' title='확인' /&gt;" WaitForReady="INTERACTIVE">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+        </ui:Target>
+      </ui:Click.Target>
+    </ui:Click>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,198" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Image '저장'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ClickImage_9" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False">
+            <ui:ClickImage.CursorPosition>
+              <ui:CursorPosition Position="Center">
+                <ui:CursorPosition.OffsetX>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:CursorPosition.OffsetX>
+                <ui:CursorPosition.OffsetY>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:CursorPosition.OffsetY>
+              </ui:CursorPosition>
+            </ui:ClickImage.CursorPosition>
+            <ui:ClickImage.Image>
+              <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFoAAAAZCAYAAACxZDnAAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAI2SURBVGhD7Zk7SwNBEIAvVVBOC1ELwcLCJo29+AMEsRT/gpWNdqKNlZ1V+lhZWGmwC7ERwcJYGBBDokQUH1hoUFJlzSzZsK6zj+R2745wA18uNzO3sN8OIXAeSSKUSESHFInokCIRHVL8Eb2VPSSzq7vEW9hMCMjk8g5Z28t1zHKiQfLK9gE5K1VJq9VyRiqViuXVNuX7F+oTvEJ0RcMkF68q6EO2cLWpuAI+wStEVzSMO9Y86Lg6/GbzhzS/G9Qr9Us/2wEJWnRIOj2E5k3wPE+a1yH28/euaDS+SOPzIxrRPKIMDLGfv5eh6xPrQQ5fBUh+f3uSiG6PukvSwz6aB6gAJM/Q1Rm21gkCm+bX54doRKuwIYj1qHrFmurw+8VING1yhO+PoHkABGB5hq4OsB5Vr8k6VlCJRh8IiaCixbqsH/I8qsPvm7ZkM9GdRtv4o2Nonkrhruy7CKuJyGpYXrWObSITLYNtvleZkNOJE+vivezwbRDbiRa/8+iEmmJrHRPkopFm14gbD1u0q4mG/9CRicY2hQk0zWFAHwbW6xIQ/Vi/i8dEywRgeZ0snVBZ3eVERyaa35SJONU9j24tnl56gxCLiTbZbFiiXU00/D5LRcMpuGR8YgrNmwCCsDwD6qoeXd0mTHKtevNfNLx6KV5cknqtTBvgGidAEpYXYUJFsF5geiaD5oMA/iq3JXJaKFCvEF3R8H5raSNLckfHpHx97oTM3DyaH0RO8nmyuL7feW9IyC8ZTSosyKfgdwAAAABJRU5ErkJggg==" />
+            </ui:ClickImage.Image>
+            <ui:ClickImage.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="&lt;html htmlwindowname='winName1' title='대기배출원관리시스템' /&gt;" WaitForReady="INTERACTIVE">
+                <ui:Target.TimeoutMS>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:Target.TimeoutMS>
+              </ui:Target>
+            </ui:ClickImage.Target>
+          </ui:ClickImage>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;시설운전사항_SEMS입력_완료&quot;]" />
+  </Sequence>
+</Activity>
